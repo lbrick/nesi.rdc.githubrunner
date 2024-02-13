@@ -37,6 +37,8 @@ Within the terraform directory you will also need to set the bucket name under t
 
 You will also need to ensure you have downloaded your `clouds.yaml` from the NeSI RDC and ensure its located in `~/config/openstack`
 
+Under the Terraform folder in the file `provider.tf` set the variable `BUCKET_NAME` to the name of your object storage insde the RDC
+
 With those variables set you are able to run the following script
 
 ``` { .sh }
