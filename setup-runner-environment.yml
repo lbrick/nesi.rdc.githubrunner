@@ -1,0 +1,23 @@
+---
+- name: Wait for Node
+  hosts: localhost
+  gather_facts: False
+  any_errors_fatal: "true"
+  roles:
+    - { role: infra/wait-for-hosts }
+
+- name: System prerequisites
+  become: yes
+  hosts: github-runner
+  roles:
+    - { role: prerequisites/runner }
+
+- name: Install GitHub Actions Runner
+  hosts: github-runner
+  become: yes
+  vars:
+    - github_account: nesi
+    - github_repo: training-environment
+    - runner_user: cloud-user
+  roles:
+    - role: monolithprojects.github_actions_runner

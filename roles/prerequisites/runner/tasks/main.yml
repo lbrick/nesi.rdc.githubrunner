@@ -1,0 +1,29 @@
+---
+- name: Set timezone
+  community.general.timezone:
+    name: Pacific/Auckland
+
+- name: Full system upgrade
+  dnf:
+    update_cache: yes
+
+- name: Set hostname
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}.flexi.nesi"
+
+- name: Check if reboot required
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_required_file
+
+- name: Reboot after upgrade
+  reboot:
+  when: reboot_required_file.stat.exists == true
+
+- name: Install packages for runner
+  dnf:
+    name:
+      - python
+      - pipx
+      - pip
+    state: present

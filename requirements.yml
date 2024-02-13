@@ -1,0 +1,5 @@
+---
+roles:
+  - name: monolithprojects.github_actions_runner
+    src: https://github.com/MonolithProjects/ansible-github_actions_runner.git
+    version: 1.18.7

@@ -1,0 +1,5 @@
+host.ini
+roles/monolithprojects.github_actions_runner/*
+terraform/.terraform.lock.hcl
+scratch-pad.md
+terraform/.terraform/*
